@@ -11,10 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dugiahuy/fista.dev:$(date +%s)
+      run: docker build . --file Dockerfile --tag dugiahuy/fista.dev:latest
     - name: Login to Docker Hub
       env:
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       run: printf $DOCKER_PASS | base64 -d  | docker login -u dugiahuy --password-stdin
     - name: Push image to Docker Hub
-      run: docker push dugiahuy/fista.dev:$(date +%s)
+      run: | 
+        docker tag dugiahuy/fista.dev dugiahuy/fista.dev
+        docker push dugiahuy/fista.dev
