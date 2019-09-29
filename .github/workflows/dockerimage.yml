@@ -13,6 +13,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag dugiahuy/fista.dev:$(date +%s)
     - name: Login to Docker Hub
-      run: base64 -d $DOCKER_PASS | docker login -u dugiahuy --password-stdin
+      run: printf $DOCKER_PASS | base64 -d  | docker login -u dugiahuy --password-stdin
     - name: Push image to Docker Hub
       run: docker push dugiahuy/fista.dev:$(date +%s)
