@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: dugiahuy/fista-landing@v1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag dugiahuy/fista.dev:$(date +%s)
+    - name: Login to Docker Hub
+      run: base64 -d $DOCKER_PASS | docker login -u dugiahuy --password-stdin
+    - name: Push image to Docker Hub
+      run: docker push dugiahuy/fista.dev:$(date +%s)
