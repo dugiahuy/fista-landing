@@ -226,7 +226,7 @@ input, select, textarea {
 		transform: translate3d(0,0,0);
 	/* Set your background with this */
 
-		background: #2B2277 url("images/bg.jpg") bottom left;
+		background: #FE8FB9 url("images/bg.jpg") bottom left;
 		background-repeat: repeat-x;
 		height: 100%;
 		left: 0;
@@ -564,7 +564,7 @@ input, select, textarea {
 			font-size: 1.4em;
 			font-weight: bolder;
 			margin: 0.75em 0 0.25em 0;
-			opacity: 0.75;
+			opacity: 1;
 		}
 
 		#header nav {
